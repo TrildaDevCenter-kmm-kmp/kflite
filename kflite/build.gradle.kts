@@ -1,6 +1,8 @@
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
+val podInstall by tasks.existing
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
@@ -30,9 +32,29 @@ kotlin {
         version = "1.0"
         ios.deploymentTarget = "16.0"
         podfile = project.file("../iosApp/Podfile")
+        pod("TensorFlowLiteC")
         framework {
             baseName = "kflite"
             isStatic = true
+            linkerOpts(
+                project.file("../iosApp/Pods/TensorFlowLiteC/Frameworks").path.let { "-F$it" },
+                "-framework", "TensorFlowLiteC"
+            )
+        }
+    }
+
+
+    targets.withType<KotlinNativeTarget>().configureEach {
+        compilations["main"].cinterops {
+            val kflite by creating {
+                definitionFile = file("nativeInterop/cinterop/kflite.def")
+                includeDirs("${rootDir}/iosApp/Pods/TensorFlowLiteC/Frameworks/TensorFlowLiteC.xcframework/ios-arm64/TensorFlowLiteC.framework/Headers")
+                packageName = "kflite"
+                //Ensure this cinterop waits for podInstall
+                tasks.named(interopProcessingTaskName).configure {
+                    dependsOn(podInstall)
+                }
+            }
         }
     }
 

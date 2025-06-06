@@ -1,0 +1,3 @@
+headers = TensorFlowLiteC.h
+compilerOpts = -F$(SRCROOT)/iosApp/Pods/TensorFlowLiteC/Frameworks
+linkerOpts = -F$(SRCROOT)/iosApp/Pods/TensorFlowLiteC/Frameworks -framework TensorFlowLiteC
