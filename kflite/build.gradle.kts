@@ -44,21 +44,6 @@ kotlin {
     }
 
 
-    targets.withType<KotlinNativeTarget>().configureEach {
-        compilations["main"].cinterops {
-            val kflite by creating {
-                definitionFile = file("nativeInterop/cinterop/kflite.def")
-                includeDirs("${rootDir}/iosApp/Pods/TensorFlowLiteC/Frameworks/TensorFlowLiteC.xcframework/ios-arm64/TensorFlowLiteC.framework/Headers")
-                packageName = "kflite"
-                //Ensure this cinterop waits for podInstall
-                tasks.named(interopProcessingTaskName).configure {
-                    dependsOn(podInstall)
-                }
-            }
-        }
-    }
-
-
     sourceSets {
 
         androidMain.dependencies {
