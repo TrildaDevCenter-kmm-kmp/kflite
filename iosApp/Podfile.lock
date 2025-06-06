@@ -1,0 +1,16 @@
+PODS:
+  - kflite (1.0)
+
+DEPENDENCIES:
+  - kflite (from `../kflite`)
+
+EXTERNAL SOURCES:
+  kflite:
+    :path: "../kflite"
+
+SPEC CHECKSUMS:
+  kflite: ce221dcfc04e373ca000cf559979e1e566242432
+
+PODFILE CHECKSUM: c87015394764378f54a19d6432faa30c117b57bd
+
+COCOAPODS: 1.16.2
