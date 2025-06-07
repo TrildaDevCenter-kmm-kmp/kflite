@@ -1,8 +1,5 @@
-import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
-import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
-val podInstall by tasks.existing
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
@@ -49,6 +46,8 @@ kotlin {
         androidMain.dependencies {
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
+            implementation(libs.tflite)
+            implementation(libs.tfliteGPU)
         }
         commonMain.dependencies {
             implementation(compose.runtime)

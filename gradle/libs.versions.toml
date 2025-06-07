@@ -11,6 +11,7 @@ androidx-espresso = "3.6.1"
 androidx-lifecycle = "2.9.0"
 androidx-testExt = "1.2.1"
 composeMultiplatform = "1.8.1"
+tflite = "2.10.1"
 junit = "4.13.2"
 kotlin = "2.1.21"
 
@@ -26,6 +27,10 @@ androidx-constraintlayout = { module = "androidx.constraintlayout:constraintlayo
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activity" }
 androidx-lifecycle-viewmodel = { module = "org.jetbrains.androidx.lifecycle:lifecycle-viewmodel", version.ref = "androidx-lifecycle" }
 androidx-lifecycle-runtimeCompose = { module = "org.jetbrains.androidx.lifecycle:lifecycle-runtime-compose", version.ref = "androidx-lifecycle" }
+
+# tflite for Android
+tflite = { module = "org.tensorflow:tensorflow-lite", version.ref = "tflite" }
+tfliteGPU = { module = "org.tensorflow:tensorflow-lite-gpu", version.ref = "tflite" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
