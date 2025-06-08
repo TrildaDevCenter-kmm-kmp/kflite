@@ -1,7 +1,7 @@
 package org.kmp.playground.kflite
 
 @Suppress("MagicNumber")
-enum class TensorDataType(val value: Int) {
+internal enum class TensorDataType(val value: Int) {
     FLOAT32(1),
     INT32(2),
     UINT8(3),

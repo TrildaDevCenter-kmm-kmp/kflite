@@ -1,3 +1,3 @@
 package org.kmp.playground.kflite
 
-expect class InterpreterOptions(numThreads: Int)
+internal expect class InterpreterOptions(numThreads: Int)
