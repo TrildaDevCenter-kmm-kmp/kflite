@@ -29,7 +29,7 @@ kotlin {
         version = "1.0"
         ios.deploymentTarget = "16.0"
         podfile = project.file("../iosApp/Podfile")
-        pod("TensorFlowLiteC")
+        pod("TensorFlowLiteObjC", moduleName = "TFLTensorFlowLite")
         framework {
             baseName = "kflite"
             isStatic = true

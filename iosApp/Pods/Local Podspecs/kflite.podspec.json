@@ -14,7 +14,7 @@
     "ios": "16.0"
   },
   "dependencies": {
-    "TensorFlowLiteC": []
+    "TensorFlowLiteObjC": []
   },
   "xcconfig": {
     "ENABLE_USER_SCRIPT_SANDBOXING": "NO"

@@ -1,5 +1,11 @@
 package org.kmp.playground.kflite
 
+import cocoapods.TFLTensorFlowLite.TFLTensor
+import cocoapods.TFLTensorFlowLite.TFLInterpreter
 
-internal typealias PlatformInterpreter = Interpreter
-internal typealias PlatformTensor = Tensor
+import kotlinx.cinterop.ExperimentalForeignApi
+
+@OptIn(ExperimentalForeignApi::class)
+internal typealias PlatformInterpreter = TFLInterpreter
+@OptIn(ExperimentalForeignApi::class)
+internal typealias PlatformTensor = TFLTensor

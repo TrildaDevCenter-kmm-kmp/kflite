@@ -98,10 +98,12 @@ EOM
 }
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_resource "${PODS_CONFIGURATION_BUILD_DIR}/TensorFlowLiteC/TensorFlowLiteC.bundle"
+  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/TensorFlowLiteObjC/TFLTensorFlowLite.bundle"
   install_resource "${PODS_ROOT}/../../kflite/build/compose/cocoapods/compose-resources"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "${PODS_CONFIGURATION_BUILD_DIR}/TensorFlowLiteC/TensorFlowLiteC.bundle"
+  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/TensorFlowLiteObjC/TFLTensorFlowLite.bundle"
   install_resource "${PODS_ROOT}/../../kflite/build/compose/cocoapods/compose-resources"
 fi
 
