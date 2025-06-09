@@ -3,7 +3,7 @@ package org.kmp.playground.kflite
 import org.tensorflow.lite.DataType
 
 
-internal actual class Tensor(
+actual class Tensor(
     internal val platformTensor: PlatformTensor
 ) {
     actual val dataType: TensorDataType
