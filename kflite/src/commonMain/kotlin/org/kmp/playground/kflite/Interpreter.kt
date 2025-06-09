@@ -2,7 +2,7 @@ package org.kmp.playground.kflite
 
 internal expect class Interpreter {
 
-    val fileResource: Int
+    val fileResource: ByteArray
     val options: InterpreterOptions
 
     /**

@@ -4,16 +4,14 @@ import kotlinx.cinterop.ExperimentalForeignApi
 import platform.Foundation.NSData
 
 @OptIn(ExperimentalForeignApi::class)
-@Suppress("ForbiddenComment")
 actual class Interpreter(
-    actual val fileResource: Int,
+    actual val fileResource: ByteArray,
     actual val options: InterpreterOptions
 ) {
 
     @OptIn(ExperimentalForeignApi::class)
     private val tflInterpreter: PlatformInterpreter = errorHandled { errPtr ->
-        //TODO must convert the compose resource to file path
-        PlatformInterpreter("", options.tflInterpreterOptions, errPtr)
+        PlatformInterpreter(fileResource.writeToTempFile(), options.tflInterpreterOptions, errPtr)
     }!!
 
     init {
@@ -108,6 +106,7 @@ actual class Interpreter(
                         outputTensor.platformTensor.dataWithError(errPtr)
                     }!!.toUByteArray().toFloatArray()
                 }
+
                 TensorDataType.INT32 -> IntArray(outputTensor.dataType.byteSize()) // Fixme:
                 TensorDataType.UINT8 -> UIntArray(outputTensor.dataType.byteSize()) // Fixme:
                 TensorDataType.INT64 -> LongArray(outputTensor.dataType.byteSize()) // Fixme:

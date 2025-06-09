@@ -4,14 +4,13 @@ import android.content.Context
 import java.io.File
 
 actual class Interpreter(
-    actual val fileResource: Int,
+    actual val fileResource: ByteArray,
     actual val options: InterpreterOptions,
     context: Context
 ) {
 
-    //TODO must convert the compose resource to file path
     private val tensorFlowInterpreter = PlatformInterpreter(
-        File(""),
+        fileResource.writeToTempFile(context),
         options.tensorFlowInterpreterOptions
     )
 
